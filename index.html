@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 适配移动端显示 -->
+    <title>自动跳转</title>
+    <style>
+        /* 1. 加载中元素的样式：居中显示 + 简单动画 */
+        .loader-container {
+            width: 100vw; /* 占满屏幕宽度 */
+            height: 100vh; /* 占满屏幕高度 */
+            display: flex; /* 用flex实现居中 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            margin: 0;
+            background-color: #fff; /* 背景色，避免和页面空白混淆 */
+        }
+        .loader {
+            font-size: 18px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        /* 加载中文字旁的旋转小点动画 */
+        .loader::after {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #333;
+            border-top-color: transparent;
+            border-radius: 50%;
+            margin-left: 8px;
+            animation: spin 1s linear infinite; /* 旋转动画 */
+        }
+        /* 动画关键帧：360度旋转 */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* 2. 隐藏noscript内容（仅JS禁用时显示，避免和加载中重叠） */
+        noscript {
+            display: none;
+        }
+        /* JS禁用时，显示noscript并隐藏加载中 */
+        .no-js .loader-container {
+            display: none;
+        }
+        .no-js noscript {
+            display: block;
+            text-align: center;
+            padding-top: 50px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<!-- 3. 给body加no-js类：JS启用时会移除，用于控制noscript显示 -->
+<body class="no-js">
+    <!-- 加载中元素：跳转完成前会一直显示，跳转后页面替换 -->
+    <div class="loader-container">
+        <div class="loader">正在检测设备，请稍候</div>
+    </div>
+
+    <!-- JS禁用时显示的手动切换链接 -->
+    <noscript>
+        <p>请手动选择访问版本：
+            <a href="./Desktop.html">电脑端</a> | 
+            <a href="./Mobile.html">手机端</a>
+        </p>
+    </noscript>
+
+    <script>
+        // 移除body的no-js类（JS启用时执行，让加载中显示、noscript隐藏）
+        document.body.classList.remove('no-js');
+        
+        // 原设备检测与跳转逻辑不变
+        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+        if (isMobile) {
+            window.location.href = "./Mobile.html";
+        } else {
+            window.location.href = "./Desktop.html";
+        }
+    </script>
+</body>
+</html>

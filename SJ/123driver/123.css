@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "YZT";
+  src: url(/Fonts/YZT.ttf) format(truetype), url(/Fonts/YZT.woff2) format(woff2),
+    url(/Fonts/YZT.woff) format(woff);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@keyframes floatLight {
+  0% {
+    transform: translateY(0); /* 初始位置 */
+    opacity: 1; /* 初始透明度 */
+  }
+  50% {
+    transform: translateY(-8px); /* 向上移动（距离可调整） */
+    opacity: 0.6; /* 半透明，模拟闪烁 */
+  }
+  100% {
+    transform: translateY(0); /* 回到原位 */
+    opacity: 1; /* 恢复不透明 */
+  }
+}
+
+/* 光点基础样式 */
+.light-dot {
+  position: absolute; /* 绝对定位，自由控制位置 */
+  width: 4px; /* 光点大小 */
+  height: 4px;
+  background-color: #b0e0e6; /* 黄色，可调整 */
+  border-radius: 50%; /* 圆形 */
+  pointer-events: none; /* 避免遮挡鼠标交互 */
+  animation: floatLight 2.5s infinite; /* 动画：2.5秒循环 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "YZT", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background: url(/BJTP.png) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  /* 允许滚动 */
+  overflow-y: auto;
+  /* 固定背景 */
+  background-attachment: fixed;
+  height: 100vh;
+}
+.flex {
+  display: flex;
+}
+.BaiSe {
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(49, 49, 49, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+.LianJ {
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(49, 49, 49, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  width: 320px;
+  height: 75px;
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  flex-direction: column;
+  transition: transform 0.3s;
+  text-decoration: none;
+}
+.LianJ:hover {
+  transform: scale(1.05);
+}

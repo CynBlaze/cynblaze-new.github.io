@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未开发</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        accent: '#8B5CF6',
+                        neutral: '#1F2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-pulse-slow {
+                animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+    <!-- 装饰元素 -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-pulse-slow"></div>
+    <div class="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+    
+    <!-- 主内容区 -->
+    <div class="text-center relative z-10 max-w-md">
+        <!-- 404数字 -->
+        <div class="text-[clamp(8rem,20vw,15rem)] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-6 tracking-tight">
+            404
+        </div>
+        
+        <!-- 提示信息 -->
+        <div class="text-[clamp(1.2rem,5vw,1.8rem)] text-neutral font-medium mb-10 text-shadow">
+            暂时还没开发此页面呢~
+        </div>
+        
+        <!-- 装饰图形 -->
+        <div class="relative w-40 h-40 mx-auto mb-12">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full animate-float"></div>
+            <div class="absolute inset-4 flex items-center justify-center">
+                <i class="fa fa-code-fork text-5xl text-primary/70"></i>
+            </div>
+        </div>
+        
+        <!-- 辅助信息 -->
+        <p class="text-gray-500 text-sm md:text-base mb-8">
+            我们正在努力开发更多功能，敬请期待...
+        </p>
+        
+        <!-- 加载动画指示器 -->
+        <div class="flex justify-center space-x-2">
+            <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+            <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.3s;"></div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="absolute bottom-6 text-gray-400 text-xs md:text-sm">
+        &copy; 2025 CynBlaze - 保留所有权利
+    </footer>
+    
+    <!-- 简单的交互效果脚本 -->
+    <script>
+        // 添加页面载入动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('transition-opacity', 'duration-1000');
+        });
+    </script>
+</body>
+</html>

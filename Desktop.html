@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>起始页</title>
+      <style>
+    @font-face {
+      font-family: 'YZT';
+      src: url(./Fonts/YZT.ttf) format(truetype),
+      url(./Fonts/YZT.woff2) format(woff2),
+      url(./Fonts/YZT.woff) format(woff);
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    *{
+      font-family: 'YZT',sans-serif;
+    }
+    /* 关键帧：模拟上下漂浮 + 闪烁 */
+@keyframes floatLight {
+  0% {
+    transform: translateY(0);   /* 初始位置 */
+    opacity: 1;                /* 初始透明度 */
+  }
+  50% {
+    transform: translateY(-8px); /* 向上移动（距离可调整） */
+    opacity: 0.6;               /* 半透明，模拟闪烁 */
+  }
+  100% {
+    transform: translateY(0);   /* 回到原位 */
+    opacity: 1;                /* 恢复不透明 */
+  }
+}
+
+/* 光点基础样式 */
+.light-dot {
+  position: absolute;         /* 绝对定位，自由控制位置 */
+  width: 4px;                 /* 光点大小 */
+  height: 4px;
+  background-color: #B0E0E6;  /* 黄色，可调整 */
+  border-radius: 50%;         /* 圆形 */
+  pointer-events: none;       /* 避免遮挡鼠标交互 */
+  animation: floatLight 2.5s infinite; /* 动画：2.5秒循环 */
+}
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .BiaoTi {
+      font-family: 'Pacifico';
+    }
+    .YS {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .BK {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .TXBJ {
+      display: flex;
+    }
+    .MoHu {
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 24px rgba(49, 49, 49, 0.3);
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background: url(./BJTP.png) no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+    .date {
+      font-size: 16px;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+    .time {
+      font-size: 48px;
+      letter-spacing: 4px;
+      margin: 20px 0;
+    }
+    .GN {
+      width: 75px;
+      height: 75px;
+      display: inline-flex;
+      margin: 14px;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s;
+      text-decoration: none;
+    }
+    .GN:hover {
+      transform: scale(1.05);
+    }
+    .ZT {
+      font-size: 30px;
+    }
+</style>
+  </head>
+<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 主区 -->
+    <div class="TXBJ" style="flex: 1">
+      <!-- 左区 -->
+      <div style="flex-direction: column; flex: 2" class="TXBJ">
+        <div style="flex: 1"></div>
+        <!-- 头像区+标题区 -->
+        <div style="justify-content: center" class="TXBJ">
+          <img
+            style="border-radius: 50%"
+            src="./TX.jpg"
+            alt="logo"
+            width="50px"
+            height="50px"
+          />
+          <h1 class="BiaoTi YS">&nbsp;&nbsp;CynBlaze's Home</h1>
+        </div>
+        <!-- 文字区 -->
+        <div
+          style="
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin-top: 30px;
+          "
+        >
+          <div class="MoHu BK" style="border-radius: 20px; padding: 20px">
+            <p class="YS">欢迎~</p>
+            <p class="YS ZiTi">CynBlaze的网站，存活于互联网的边缘~</p>
+          </div>
+        </div>
+        <div style="flex: 1"></div>
+      </div>
+      <!-- 左-右区 -->
+      <div style="flex: 3; flex-direction: column" class="TXBJ">
+        <!-- 上区 -->
+        <div style="flex: 1" class="TXBJ">
+          <!-- 左区 -->
+          <div class="TXBJ" style="flex: 1">
+            <div
+              style="
+                margin: 14px;
+                padding: 20px;
+                border-radius: 20px;
+                margin: 30px;
+                flex-direction: column;
+              "
+              class="MoHu TXBJ BK"
+            >
+              <div class="YS">趴在草地上，能听见大地的心跳。</div>
+              <div style="flex: 1"></div>
+              <div style="text-align: right" class="YS">--[原神]</div>
+            </div>
+          </div>
+          <!-- 右区 -->
+          <div style="flex: 1">
+            <div
+              style="
+                margin: 14px;
+                padding: 20px;
+                border-radius: 20px;
+                margin: 30px;
+                text-align: center;
+              "
+              class="MoHu BK"
+            >
+              <div class="date YS">加载中...</div>
+              <div class="time YS">加载中...</div>
+            </div>
+          </div>
+        </div>
+        <!-- 下区 -->
+        <div
+          style="flex: 2; justify-content: center; flex-wrap: wrap; gap: 30px"
+          class="TXBJ"
+        >
+          <div>
+            <a href="/ZWKF/404.html" class="MoHu GN BK YS" style="font-size: 20px"
+              >钢铁雄心4教程</a
+            >
+          </div>
+          <div><a target="_blank" href="/ZWKF/404.html" class="MoHu GN ZT BK YS">作者博客</a></div>
+          <div><a target="_blank" href="/ZWKF/404.html" class="MoHu GN ZT BK YS">正版野史</a></div>
+          <div><a target="_blank" href="/ZM/123driver/123.html" class="MoHu GN ZT BK YS">各种资源</a></div>
+          <div><a target="_blank" href="/ZWKF/404.html" class="MoHu GN ZT BK YS">教学视频</a></div>
+          <div><a target="_blank" href="/ZWKF/404.html" class="MoHu GN ZT BK YS">公告</a></div>
+          <div>
+            <a href="/ZWKF/404.html" target="_blank" class="MoHu GN BK YS" style="font-size: 20px"
+              >不冷不热的小知识</a
+            >
+          </div>
+          <div><a href="/ZWKF/404.html" target="_blank" class="MoHu GN ZT BK YS">联系我们</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- 副区 -->
+    <div class="TXBJ" style="height: 50px"></div>
+  </body>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const weekList = ["日", "一", "二", "三", "四", "五", "六"];
+      const week = weekList[now.getDay()];
+      document.querySelector(
+        ".date"
+      ).textContent = `${year} 年 ${month} 月 ${day} 日 星期${week}`;
+      const hours = String(now.getHours()).padStart(2, "0");
+      const mins = String(now.getMinutes()).padStart(2, "0");
+      const secs = String(now.getSeconds()).padStart(2, "0");
+      document.querySelector(".time").textContent = `${hours}:${mins}:${secs}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    window.addEventListener('load', () => {
+  const numLights = 30; // 光点数量（建议 20~50，太多影响性能）
+  const body = document.body;
+
+  for (let i = 0; i < numLights; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('light-dot');
+
+    // 随机位置（基于视口宽度/高度）
+    const randomX = Math.random() * 100 + 'vw'; // 0~100% 视口宽度
+    const randomY = Math.random() * 100 + 'vh'; // 0~100% 视口高度
+    dot.style.left = randomX;
+    dot.style.top = randomY;
+
+    // 随机动画延迟和时长（增加随机性）
+    const delay = Math.random() * 3 + 's'; // 0~3秒延迟
+    const duration = Math.random() * 2 + 1.5 + 's'; // 1.5~3.5秒时长
+    dot.style.animationDelay = delay;
+    dot.style.animationDuration = duration;
+
+    body.appendChild(dot);
+  }
+});
+
+  </script>
+</html>
